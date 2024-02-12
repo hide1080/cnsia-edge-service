@@ -72,6 +72,10 @@ class UserControllerTests {
           StandardClaimNames.FAMILY_NAME,
           expectedUser.lastName()
         )
+        .claim(
+          "roles",
+          expectedUser.roles()
+        )
     );
   }
 }

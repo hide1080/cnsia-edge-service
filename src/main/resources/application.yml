@@ -21,6 +21,8 @@ spring:
         multiplier: 1.1
     gateway:
       default-filters:
+      - SaveSession
+      - TokenRelay
       - name: RequestRateLimiter
         args:
           redis-rate-limiter:
@@ -38,7 +40,6 @@ spring:
             maxBackOff: 500ms
             factor: 2
             basedOnPreviousValue: false
-      - SaveSession
       httpclient:
         connect-timeout: 2000
         response-timeout: 5s
@@ -84,7 +85,7 @@ spring:
           keycloak:
             client-id: edge-service
             client-secret: polar-keycloak-secret
-            scope: openid
+            scope: openid,roles
         provider:
           keycloak:
             issuer-uri: http://localhost:8080/realms/PolarBookshop
