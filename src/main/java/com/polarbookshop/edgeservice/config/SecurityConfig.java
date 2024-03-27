@@ -34,10 +34,9 @@ public class SecurityConfig {
       return http
       .authorizeExchange(
         exchange -> exchange
-          .pathMatchers("/", "/*.css", "/*.js", "/favicon.ico")
-            .permitAll()
-          .pathMatchers(HttpMethod.GET, "/books/**")
-            .permitAll()
+          .pathMatchers("/actuator/**").permitAll()
+          .pathMatchers("/", "/*.css", "/*.js", "/favicon.ico").permitAll()
+          .pathMatchers(HttpMethod.GET, "/books/**").permitAll()
           .anyExchange().authenticated()
       )
       .exceptionHandling(
