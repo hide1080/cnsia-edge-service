@@ -46,6 +46,7 @@ spring:
     name: edge-service
   cloud:
     config:
+      enabled: false
       uri: http://localhost:8888
       request-connect-timeout: 5000 # 5s
       request-read-timeout: 5000 # 5s
@@ -106,7 +107,7 @@ spring:
           args:
             name: orderCircuitBreaker
   config:
-    import: "optional:configserver:"
+    import: "" # "optional:configserver:"
   lifecycle:
     timeout-per-shutdown-phase: 15s
   redis:
